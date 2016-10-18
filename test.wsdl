@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<wsdl:definitions name="Fibonacci"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                  targetNamespace="Fibonacci"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:tns="Fibonacci"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+
+
+
+    <wsdl:message name="fibRequest">
+        <wsdl:part name="length" type="tns:integer"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="fibResponse">
+        <wsdl:part name="string" type="tns:string"></wsdl:part>
+    </wsdl:message>
+
+    <wsdl:message name="nodRequest">
+        <wsdl:part name="in1" type="tns:integer"></wsdl:part>
+	<wsdl:part name="in2" type="tns:integer"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="nodResponse">
+        <wsdl:part name="out" type="tns:integer"></wsdl:part>
+    </wsdl:message>
+
+    <wsdl:message name="nokRequest">
+        <wsdl:part name="in1" type="tns:integer"></wsdl:part>
+    <wsdl:part name="in2" type="tns:integer"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="nokResponse">
+        <wsdl:part name="out" type="tns:integer"></wsdl:part>
+    </wsdl:message>    
+
+        <wsdl:message name="modSumRequest">
+        <wsdl:part name="in1" type="tns:integer"></wsdl:part>
+    <wsdl:part name="in2" type="tns:integer"></wsdl:part>
+    <wsdl:part name="in3" type="tns:integer"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="modSumResponse">
+        <wsdl:part name="out" type="tns:integer"></wsdl:part>
+    </wsdl:message>
+
+        <wsdl:message name="modMulRequest">
+        <wsdl:part name="in1" type="tns:integer"></wsdl:part>
+    <wsdl:part name="in2" type="tns:integer"></wsdl:part>
+    <wsdl:part name="in3" type="tns:integer"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="modMulResponse">
+        <wsdl:part name="out" type="tns:integer"></wsdl:part>
+    </wsdl:message>
+
+    <wsdl:portType name="Fibonacci">
+        <wsdl:operation name="fib">
+            <wsdl:input message="tns:fibRequest"/>
+            <wsdl:output message="tns:fibResponse"/>
+        </wsdl:operation>
+	   <wsdl:operation name="nod">
+            <wsdl:input message="tns:nodRequest"/>
+            <wsdl:output message="tns:nodResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="nok">
+            <wsdl:input message="tns:nokRequest"/>
+            <wsdl:output message="tns:nokResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="modSum">
+            <wsdl:input message="tns:modSumRequest"/>
+            <wsdl:output message="tns:modSumResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="modMul">
+            <wsdl:input message="tns:modMulRequest"/>
+            <wsdl:output message="tns:modMulResponse"/>
+        </wsdl:operation>                
+    </wsdl:portType>
+
+    <wsdl:binding name="Fibonacci" type="tns:Fibonacci">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="fib">
+            <soap:operation soapAction="http://localhost/server.php"/>
+            <wsdl:input>
+                <soap:body use="literal" namespace="Fibonacci"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" namespace="Fibonacci"/>
+            </wsdl:output>
+        </wsdl:operation>
+	<wsdl:operation name="nod">
+            <soap:operation soapAction="http://localhost/server.php"/>
+            <wsdl:input>
+                <soap:body use="literal" namespace="Fibonacci"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" namespace="Fibonacci"/>
+            </wsdl:output>
+        </wsdl:operation>
+    <wsdl:operation name="nok">
+            <soap:operation soapAction="http://localhost/server.php"/>
+            <wsdl:input>
+                <soap:body use="literal" namespace="Fibonacci"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" namespace="Fibonacci"/>
+            </wsdl:output>
+        </wsdl:operation>        
+    <wsdl:operation name="modSum">
+            <soap:operation soapAction="http://localhost/server.php"/>
+            <wsdl:input>
+                <soap:body use="literal" namespace="Fibonacci"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" namespace="Fibonacci"/>
+            </wsdl:output>
+        </wsdl:operation> 
+    <wsdl:operation name="modMul">
+            <soap:operation soapAction="http://localhost/server.php"/>
+            <wsdl:input>
+                <soap:body use="literal" namespace="Fibonacci"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal" namespace="Fibonacci"/>
+            </wsdl:output>
+        </wsdl:operation>         
+    </wsdl:binding>
+
+    <wsdl:service name="Fibonacci">
+        <wsdl:port binding="tns:Fibonacci" name="Fibonacci">
+            <soap:address location="http://localhost/server.php"/>
+        </wsdl:port>
+    </wsdl:service>
+
+</wsdl:definitions>
